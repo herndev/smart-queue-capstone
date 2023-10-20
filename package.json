@@ -2,6 +2,10 @@
   "name": "smart-queue",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "drakkar",
+    "url": "https://github.com/Drakkarrr"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
