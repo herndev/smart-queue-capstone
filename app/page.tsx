@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Logo from "@/assets/logo.png"
-import WavesBg from "@/assets/bg-svg.png"
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
@@ -19,7 +18,7 @@ export default function WelcomePage() {
         <div className="pt-8 space-x-4 ">
           <Link
             href="/purpose"
-            className={`text-xl tracking-wide font-extrabold bg-[#F9D029] hover:bg-yellow-300 text-black ${cn(
+            className={`text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
               buttonVariants({ size: "lg" })
             )}`}
           >
