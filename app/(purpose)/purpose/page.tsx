@@ -13,6 +13,8 @@ export default function PurposePage() {
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
         </div>
         <div className="bg-[#F9D029]">
           <p>&nbsp;</p>
@@ -20,34 +22,36 @@ export default function PurposePage() {
           <p>&nbsp;</p>
         </div>
       </div>
-      <Image
-        src={Logo}
-        width={200}
-        height={200}
-        alt="Moelci-II logo"
-        className="top-24"
-      />
-      <div className="text-center">
-        <h2 className="font-heading text-3xl font-bold text-[#E80203] leading-[1.1] sm:text-3xl md:text-6xl">
-          Choose your purpose of visit
-        </h2>
-        <div className="flex flex-col items-center pt-10 space-y-8">
-          <Link
-            href="/purpose/concern"
-            className={`text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
-              buttonVariants({ size: "lg" })
-            )}`}
-          >
-            Concern
-          </Link>
-          <Link
-            href="/purpose/payment"
-            className={`text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
-              buttonVariants({ size: "lg" })
-            )}`}
-          >
-            Payment
-          </Link>
+      <div className="grid w-10/12 p-8 space-y-10 ring ring-black ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-900 place-items-center">
+        <Image
+          src={Logo}
+          width={200}
+          height={200}
+          alt="Moelci-II logo"
+          className="absolute top-24"
+        />
+        <div className="text-center">
+          <h2 className="font-heading text-3xl font-bold text-[#E80203] leading-[1.1] sm:text-3xl md:text-6xl">
+            Choose your purpose of visit
+          </h2>
+          <div className="flex flex-col items-center space-y-10 pt-14">
+            <Link
+              href="/purpose/concern"
+              className={`text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
+                buttonVariants({ size: "lg" })
+              )}`}
+            >
+              Concern
+            </Link>
+            <Link
+              href="/purpose/payment"
+              className={`text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
+                buttonVariants({ size: "lg" })
+              )}`}
+            >
+              Payment
+            </Link>
+          </div>
         </div>
       </div>
     </div>
