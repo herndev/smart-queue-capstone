@@ -18,7 +18,7 @@ export default function WelcomePage() {
         <div className="pt-8 space-x-4 ">
           <Link
             href="/purpose"
-            className={`text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
+            className={`btn-custom text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
               buttonVariants({ size: "lg" })
             )}`}
           >

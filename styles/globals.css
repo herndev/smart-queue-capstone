@@ -80,3 +80,7 @@ body {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
+
+.btn-custom {
+  border: 1px solid black !important;
+}
