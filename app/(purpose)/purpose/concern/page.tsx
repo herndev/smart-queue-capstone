@@ -1,10 +1,14 @@
+"use client"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import Logo from "@/assets/logo.png"
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 export default function ConcernPage() {
+  const router = useRouter()
+
   return (
     <div className="grid w-full h-full place-items-center">
       <div className="grid w-full h-full grid-row-2">
@@ -36,7 +40,8 @@ export default function ConcernPage() {
           </h2>
           <div className="flex justify-around w-full">
             <Link
-              href="/purpose/concern"
+              href="#"
+              onClick={() => router.back()}
               className={`rounded-none text-xl tracking-wide font-bold bg-black hover:pb-2 text-white ${cn(
                 buttonVariants({ size: "lg" })
               )}`}
@@ -44,7 +49,7 @@ export default function ConcernPage() {
               &larr; Back
             </Link>
             <Link
-              href="/purpose/payment"
+              href="/thankyou"
               className={`rounded-none text-xl tracking-wide font-bold hover:pb-2 text-white ${cn(
                 buttonVariants({ size: "lg", variant: "destructive" })
               )}`}

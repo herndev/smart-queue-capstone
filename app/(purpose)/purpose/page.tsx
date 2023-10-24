@@ -37,7 +37,7 @@ export default function PurposePage() {
           <div className="flex flex-col items-center space-y-10 pt-14">
             <Link
               href="/purpose/concern"
-              className={`btn-custom text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
+              className={`btn-custom text-xl rounded-none tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
                 buttonVariants({ size: "lg" })
               )}`}
             >
@@ -45,7 +45,7 @@ export default function PurposePage() {
             </Link>
             <Link
               href="/purpose/payment"
-              className={`btn-custom text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
+              className={`btn-custom rounded-none text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
                 buttonVariants({ size: "lg" })
               )}`}
             >
