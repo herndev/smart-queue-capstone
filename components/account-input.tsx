@@ -26,6 +26,8 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
+import { useState } from "react";
+import router from "next/router";
 
 const profileFormSchema = z.object({
   AccountNumber: z
@@ -62,6 +64,22 @@ const defaultValues: Partial<ProfileFormValues> = {
 };
 
 export function AccountInput() {
+  const [inputValue, setInputValue] = useState("");
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const isInputValid = () => {
+    // Add your validation logic here
+    return inputValue.trim() !== "";
+  };
+
+  const handleEnterClick = () => {
+    if (isInputValid()) {
+      router.push("/thankyou");
+    }
+  };
+
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues,
