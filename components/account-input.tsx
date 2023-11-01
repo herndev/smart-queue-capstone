@@ -1,12 +1,5 @@
-"use client";
-
-import Link from "next/link";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useFieldArray, useForm } from "react-hook-form";
-import * as z from "zod";
-
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -17,17 +10,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+import { useFieldArray, useForm } from "react-hook-form";
+import * as z from "zod";
 import { toast } from "@/components/ui/use-toast";
-import { useState } from "react";
-import router from "next/router";
 
 const profileFormSchema = z.object({
   AccountNumber: z
@@ -63,21 +48,20 @@ const defaultValues: Partial<ProfileFormValues> = {
   ],
 };
 
-export function AccountInput() {
+export function AccountInput({
+  onInputValidChange,
+}: {
+  onInputValidChange: (valid: boolean) => void;
+}) {
   const [inputValue, setInputValue] = useState("");
+  const [isInputValid, setIsInputValid] = useState(false);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
+    const newValue = event.target.value;
+    setInputValue(newValue);
 
-  const isInputValid = () => {
-    // Add your validation logic here
-    return inputValue.trim() !== "";
-  };
-
-  const handleEnterClick = () => {
-    if (isInputValid()) {
-      router.push("/thankyou");
-    }
+    setIsInputValid(newValue.length === 9);
+    onInputValidChange(newValue.length === 9);
   };
 
   const form = useForm<ProfileFormValues>({
@@ -106,7 +90,7 @@ export function AccountInput() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className=" w-[420px] m-auto text-left"
+        className="w-[420px] m-auto text-left"
       >
         <FormField
           control={form.control}
@@ -115,10 +99,15 @@ export function AccountInput() {
             <FormItem>
               <FormLabel className="text-md">Account Number</FormLabel>
               <FormControl>
-                <Input placeholder="Account Number" {...field} />
+                <Input
+                  placeholder="Account Number"
+                  {...field}
+                  value={inputValue}
+                  onChange={handleInputChange}
+                />
               </FormControl>
               <FormDescription>
-                Please enter your 9 digit account number.
+                Please enter your 9-digit account number.
               </FormDescription>
               <FormMessage />
             </FormItem>
