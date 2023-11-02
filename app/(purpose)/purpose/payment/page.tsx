@@ -64,8 +64,13 @@ export default function PaymentPage() {
                 onClick={() => router.push("/thankyou")}
                 className={`rounded-none text-xl tracking-wide font-bold hover:pb-1 text-white ${
                   isInputValid
-                    ? cn(buttonVariants({ size: "lg", variant: "destructive" }))
-                    : "bg-gray-300 cursor-not-allowed"
+                    ? `${cn(
+                        buttonVariants({ size: "lg", variant: "destructive" }),
+                      )} rounded-none bd-none text-xl`
+                    : `${buttonVariants({
+                        size: "lg",
+                        variant: "destructive",
+                      })} rounded-none text-xl tracking-wide font-bold bg-black hover:pb-1 text-white cursor-not-allowed bd-none`
                 }`}
                 disabled={!isInputValid}
               >

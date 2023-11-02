@@ -84,3 +84,7 @@ body {
 .btn-custom {
   border: 1px solid black !important;
 }
+
+.bd-none {
+  border-radius: 0;
+}
