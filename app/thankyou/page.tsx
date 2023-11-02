@@ -1,10 +1,27 @@
-import Image from "next/image"
-import Logo from "@/assets/logo.png"
-import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Logo from "@/assets/logo.png";
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function ThankYouPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      localStorage.clear();
+      router.push("/");
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [router]);
+
   return (
     <div className="grid w-full h-full pt-4 place-items-center">
       <Image src={Logo} width={200} height={200} alt="Moelci-II logo" />
@@ -35,5 +52,5 @@ export default function ThankYouPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
