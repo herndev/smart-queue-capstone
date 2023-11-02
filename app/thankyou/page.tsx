@@ -10,10 +10,17 @@ import { cn } from "@/lib/utils";
 
 export default function ThankYouPage() {
   const router = useRouter();
+  const storedAccountNumber = localStorage.getItem("accountNumber");
+
+  if (storedAccountNumber !== null) {
+    localStorage.setItem("AccountNumber", storedAccountNumber);
+    console.log("AccountNumber", storedAccountNumber);
+  } else {
+    console.log("Account Number not found in local storage");
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      localStorage.clear();
       router.push("/");
     }, 3000);
 

@@ -1,10 +1,26 @@
-import Image from "next/image"
-import Logo from "@/assets/logo.png"
-import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+"use client";
+
+import { useEffect } from "react";
+import Image from "next/image";
+import Logo from "@/assets/logo.png";
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function WelcomePage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      localStorage.clear();
+    }, 800);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [router]);
+
   return (
     <div className="grid w-full h-full pt-4 place-items-center">
       <Image src={Logo} width={200} height={200} alt="Moelci-II logo" />
@@ -19,7 +35,7 @@ export default function WelcomePage() {
           <Link
             href="/purpose"
             className={`btn-custom text-xl rounded-none  text-black tracking-wide font-extrabold hover:bg-yellow-300 hover:pb-2 ${cn(
-              buttonVariants({ size: "lg" })
+              buttonVariants({ size: "lg" }),
             )}`}
           >
             Proceed
@@ -37,5 +53,5 @@ export default function WelcomePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

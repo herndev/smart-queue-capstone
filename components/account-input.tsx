@@ -60,8 +60,13 @@ export function AccountInput({
     const newValue = event.target.value;
     setInputValue(newValue);
 
-    setIsInputValid(newValue.length === 9);
-    onInputValidChange(newValue.length === 9);
+    const isValid = newValue.length === 9;
+    setIsInputValid(isValid);
+    onInputValidChange(isValid);
+
+    if (isValid) {
+      localStorage.setItem("accountNumber", newValue);
+    }
   };
 
   const form = useForm<ProfileFormValues>({

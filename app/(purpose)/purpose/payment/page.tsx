@@ -12,9 +12,21 @@ import { cn } from "@/lib/utils";
 export default function PaymentPage() {
   const router = useRouter();
   const [isInputValid, setInputValid] = useState(false);
+  const [accountNumber, setAccountNumber] = useState("");
 
   const handleInputValidChange = (valid: boolean) => {
     setInputValid(valid);
+  };
+
+  const handleAccountNumberChange = (accountNumber: string | any) => {
+    setAccountNumber(accountNumber);
+  };
+
+  const handleEnterClick = () => {
+    if (isInputValid) {
+      localStorage.setItem("AccountNumber", accountNumber);
+      router.push("/thankyou");
+    }
   };
 
   return (
@@ -61,7 +73,7 @@ export default function PaymentPage() {
                 &larr; Back
               </Link>
               <Button
-                onClick={() => router.push("/thankyou")}
+                onClick={handleEnterClick}
                 className={`rounded-none text-xl tracking-wide font-bold hover:pb-1 text-white ${
                   isInputValid
                     ? `${cn(
