@@ -60,6 +60,9 @@ export default function ThankYouPage() {
           <p>&nbsp;</p>
         </div>
       </div>
+      {/* <div className="w-full h-full mt-14 bg-slate-900">
+        
+      </div> */}
     </div>
   );
 }

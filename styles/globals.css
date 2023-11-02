@@ -88,3 +88,11 @@ body {
 .bd-none {
   border-radius: 0;
 }
+
+.bg-waves {
+  background-image: url("../assets/bg-waves.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: contain; */
+  background-size: cover;
+}
