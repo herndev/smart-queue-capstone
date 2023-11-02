@@ -74,15 +74,14 @@ export default function PaymentPage() {
               </Link>
               <Button
                 onClick={handleEnterClick}
-                className={`rounded-none text-xl tracking-wide font-bold hover:pb-1 text-white ${
+                className={`${
                   isInputValid
                     ? `${cn(
                         buttonVariants({ size: "lg", variant: "destructive" }),
-                      )} rounded-none bd-none text-xl`
+                      )} rounded-none bd-none text-xl hover:pb-3 tracking-wide font-bold text-white`
                     : `${buttonVariants({
                         size: "lg",
-                        variant: "destructive",
-                      })} rounded-none text-xl tracking-wide font-bold bg-black hover:pb-1 text-white cursor-not-allowed bd-none`
+                      })} rounded-none text-xl tracking-wide font-bold bg-black text-white cursor-not-allowed bd-none`
                 }`}
                 disabled={!isInputValid}
               >

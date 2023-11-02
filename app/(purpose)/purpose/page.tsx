@@ -1,8 +1,8 @@
-import Image from "next/image"
-import Logo from "@/assets/logo.png"
-import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+import Image from "next/image";
+import Logo from "@/assets/logo.png";
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function PurposePage() {
   return (
@@ -37,16 +37,16 @@ export default function PurposePage() {
           <div className="flex flex-col items-center space-y-10 pt-14">
             <Link
               href="/purpose/concern"
-              className={`btn-custom text-xl rounded-none tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
-                buttonVariants({ size: "lg" })
+              className={`btn-custom text-xl rounded-none tracking-wide font-extrabold hover:bg-yellow-300 hover:pb-1 text-black ${cn(
+                buttonVariants({ size: "lg" }),
               )}`}
             >
               Concern
             </Link>
             <Link
               href="/purpose/payment"
-              className={`btn-custom rounded-none text-xl tracking-wide font-extrabold hover:bg-yellow-300 text-black ${cn(
-                buttonVariants({ size: "lg" })
+              className={`btn-custom rounded-none text-xl tracking-wide font-extrabold hover:bg-yellow-300 hover:pb-1 text-black ${cn(
+                buttonVariants({ size: "lg" }),
               )}`}
             >
               Payment
@@ -55,5 +55,5 @@ export default function PurposePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
