@@ -48,7 +48,6 @@ export default function WelcomePage() {
         <Image
           src={BgWaves}
           layout="fill"
-          // objectFit='cover'
           objectPosition="bottom"
           alt="Moelci-II waves"
         />
