@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
 import ThanksEmoji from "@/assets/thanksEmoji.png";
+import BgWaves from "@/assets/bg-waves.png";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -40,7 +41,7 @@ export default function ThankYouPage() {
         <h2 className="font-heading text-3xl font-bold leading-[1.1] sm:text-3xl md:text-6xl">
           Have a great day!
         </h2>
-        <div className="pt-6">
+        <div className="pt-2">
           <Image
             src={ThanksEmoji}
             className="m-auto"
@@ -50,19 +51,15 @@ export default function ThankYouPage() {
           />
         </div>
       </div>
-      <div className="grid w-full h-full mt-14 grid-row-2">
-        <div className="bg-[#F9D029]">
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-        </div>
-        <div className="bg-[#E80203]">
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-        </div>
+      <div className="relative w-full h-52">
+        <Image
+          src={BgWaves}
+          layout="fill"
+          objectPosition="bottom"
+          alt="Moelci-II waves"
+          // className='rotate-180'
+        />
       </div>
-      {/* <div className="w-full h-full mt-14 bg-slate-900">
-        
-      </div> */}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
+import BgWaves from "@/assets/bg-waves.png";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { AccountInput } from "@/components/account-input";
 import Link from "next/link";
@@ -32,20 +33,14 @@ export default function PaymentPage() {
   return (
     <>
       <div className="grid w-full h-full place-items-center">
-        <div className="grid w-full h-full grid-row-2">
-          <div className="bg-[#E80203]">
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-          </div>
-          <div className="bg-[#F9D029]">
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-          </div>
+        <div className="relative w-full h-52">
+          <Image
+            src={BgWaves}
+            layout="fill"
+            objectPosition="bottom"
+            alt="Moelci-II waves"
+            className="rotate-180"
+          />
         </div>
         <div className="grid w-10/12 p-8 space-y-10 ring ring-black ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-900 place-items-center">
           <Image
