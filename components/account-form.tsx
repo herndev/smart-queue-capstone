@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { CalendarIcon, CheckIcon, SortAscIcon } from "lucide-react";
 import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -173,7 +173,7 @@ export function AccountForm() {
                             (language) => language.value === field.value,
                           )?.label
                         : "Select language"}
-                      <CaretSortIcon className="w-4 h-4 ml-2 opacity-50 shrink-0" />
+                      <SortAscIcon className="w-4 h-4 ml-2 opacity-50 shrink-0" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
