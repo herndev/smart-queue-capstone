@@ -64,7 +64,7 @@ export default function AdminDashboardPage() {
             <p>Account Number: 123456789</p>
           </div>
 
-          <div className="flex flex-col items-center space-y-10 pt-14">
+          <div className="flex flex-col items-center pt-10 space-y-10">
             <Link
               onClick={handleNextClick}
               href="#"
