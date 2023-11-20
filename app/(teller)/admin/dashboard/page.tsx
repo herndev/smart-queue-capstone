@@ -62,6 +62,7 @@ export default function AdminDashboardPage() {
           <div className="grid my-6 text-lg font-bold place-items-center">
             <p>Purpose of Visit: {visitPurpose}</p>
             <p>Account Number: 123456789</p>
+            <p>You are expected to be serve at 10:15am</p>
           </div>
 
           <div className="flex flex-col items-center pt-10 space-y-10">
