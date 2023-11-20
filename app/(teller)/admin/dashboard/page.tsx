@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
 import BgWaves from "@/assets/bg-waves.png";
@@ -5,7 +8,30 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+type CurrentNumberServing = {
+  currentNumberServing: number;
+};
+
+type VisitPurpose = "Payment" | "Concern";
+
 export default function AdminDashboardPage() {
+  const [currentNumberServing, setCurrentNumberServing] = useState<
+    CurrentNumberServing | any
+  >();
+  const [visitPurpose, setVisitPurpose] = useState<VisitPurpose>("Payment");
+
+  const handleNextClick = () => {
+    setCurrentNumberServing(() => {
+      const currentNumberServing = Math.floor(Math.random() * 1000) + 1;
+      return currentNumberServing;
+    });
+
+    setVisitPurpose(() => {
+      const visitPurpose = Math.floor(Math.random() * 2) + 1;
+      return visitPurpose === 1 ? "Payment" : "Concern";
+    });
+  };
+
   return (
     <div className="grid w-full h-full place-items-center">
       <div className="relative w-full h-60">
@@ -30,16 +56,17 @@ export default function AdminDashboardPage() {
             Current Number Serving
           </h2>
           <h3 className="font-heading md:text-6xl font-bold text-[#E80203] leading-[1.1]">
-            203
+            {currentNumberServing}
           </h3>
 
           <div className="grid my-6 text-lg font-bold place-items-center">
-            <p>Purpose of Visit: Payment</p>
+            <p>Purpose of Visit: {visitPurpose}</p>
             <p>Account Number: 123456789</p>
           </div>
 
           <div className="flex flex-col items-center space-y-10 pt-14">
             <Link
+              onClick={handleNextClick}
               href="#"
               className={`btn-custom rounded-full text-xl tracking-wide font-extrabold hover:bg-yellow-300 hover:pb-1 text-black ${cn(
                 buttonVariants({ size: "lg" }),
