@@ -1,1 +1,1 @@
-## API and Authentication (admin/teller)
+## CLIENT SIDE USING NEXT.JS AND TYPESCRIPT
