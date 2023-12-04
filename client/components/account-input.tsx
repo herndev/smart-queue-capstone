@@ -50,8 +50,10 @@ const defaultValues: Partial<ProfileFormValues> = {
 
 export function AccountInput({
   onInputValidChange,
+  onInputChange,
 }: {
   onInputValidChange: (valid: boolean) => void;
+  onInputChange?: (value: ProfileFormValues['AccountNumber']) => void;
 }) {
   const [inputValue, setInputValue] = useState("");
   const [isInputValid, setIsInputValid] = useState(false);
@@ -59,6 +61,9 @@ export function AccountInput({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
+
+    // lifting the state up
+    onInputChange?.(newValue);
 
     const isValid = newValue.length === 9;
     setIsInputValid(isValid);

@@ -6,9 +6,23 @@ import BgWaves from "@/assets/bg-waves.png";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useCallback } from "react";
+import useRequest from "@/hooks/useRequest";
 
 export default function ConcernPage() {
+  const request = useRequest();
   const router = useRouter();
+
+  const handlePrintQueue = async () => {
+    const res = await request.post('get_que', {
+      que_type: 'concern',
+    });
+
+    console.log('TICKET RESPONSE: ', res);
+    if (res.ok) {
+      router.push("/thankyou");
+    }
+  };
 
   return (
     <div className="grid w-full h-full place-items-center">
@@ -45,6 +59,7 @@ export default function ConcernPage() {
             </Link>
             <Link
               href="/thankyou"
+              onClick={handlePrintQueue}
               className={`rounded-none text-xl tracking-wide font-bold hover:pb-2 text-white ${cn(
                 buttonVariants({ size: "lg", variant: "destructive" }),
               )}`}

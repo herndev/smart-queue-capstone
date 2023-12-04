@@ -7,6 +7,7 @@ import BgWaves from "@/assets/bg-waves.png";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import useRequest from "@/hooks/useRequest";
 
 type CurrentNumberServing = {
   currentNumberServing: number;
@@ -15,21 +16,31 @@ type CurrentNumberServing = {
 type VisitPurpose = "Payment" | "Concern";
 
 export default function AdminDashboardPage() {
+  const request = useRequest();
   const [currentNumberServing, setCurrentNumberServing] = useState<
     CurrentNumberServing | any
   >();
   const [visitPurpose, setVisitPurpose] = useState<VisitPurpose>("Payment");
 
-  const handleNextClick = () => {
-    setCurrentNumberServing(() => {
-      const currentNumberServing = Math.floor(Math.random() * 1000) + 1;
-      return currentNumberServing;
-    });
+  const handleNextClick = async () => {
+    const res = await request.get('queue/serving');
 
-    setVisitPurpose(() => {
-      const visitPurpose = Math.floor(Math.random() * 2) + 1;
-      return visitPurpose === 1 ? "Payment" : "Concern";
-    });
+    if (res.ok) {
+      const data = await res.json();
+
+      setCurrentNumberServing(data.priority_number);
+      setVisitPurpose(data.que_type);
+
+      // setCurrentNumberServing(() => {
+      //   const currentNumberServing = Math.floor(Math.random() * 1000) + 1;
+      //   return currentNumberServing;
+      // });
+
+      // setVisitPurpose(() => {
+      //   const visitPurpose = Math.floor(Math.random() * 2) + 1;
+      //   return visitPurpose === 1 ? "Payment" : "Concern";
+      // });
+    }
   };
 
   return (
@@ -61,6 +72,7 @@ export default function AdminDashboardPage() {
 
           <div className="grid my-6 text-lg font-bold place-items-center">
             <p>Purpose of Visit: {visitPurpose}</p>
+            {/* <p>Account Number: 123456789</p> */}
             <p>Account Number: 123456789</p>
             <p>You are expected to be serve at 10:15am</p>
           </div>
