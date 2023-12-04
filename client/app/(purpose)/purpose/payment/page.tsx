@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
@@ -9,8 +9,10 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { AccountInput } from "@/components/account-input";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import useRequest from "@/hooks/useRequest";
 
 export default function PaymentPage() {
+  const request = useRequest();
   const router = useRouter();
   const [isInputValid, setInputValid] = useState(false);
   const [accountNumber, setAccountNumber] = useState("");
@@ -23,12 +25,22 @@ export default function PaymentPage() {
     setAccountNumber(accountNumber);
   };
 
-  const handleEnterClick = () => {
+  const handleEnterClick = useCallback(async () => {
+    const res = await request.post('get_que', {
+      account_number: accountNumber,
+      que_type: 'payment',
+    });
+
+    console.log('TICKET RESPONSE: ', res);
+    if (res.ok) {
+      router.push("/thankyou");
+    }
+
     if (isInputValid) {
       localStorage.setItem("AccountNumber", accountNumber);
       router.push("/thankyou");
     }
-  };
+  }, [accountNumber]);
 
   return (
     <>
@@ -55,7 +67,10 @@ export default function PaymentPage() {
               Payment
             </h2>
             <div>
-              <AccountInput onInputValidChange={handleInputValidChange} />
+              <AccountInput 
+                onInputValidChange={handleInputValidChange}
+                onInputChange={handleAccountNumberChange}
+              />
             </div>
             <div className="flex justify-around w-full">
               <Link
